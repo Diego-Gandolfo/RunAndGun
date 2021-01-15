@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Projectile
+namespace Gameplay
 {
-    public class ProjectileBehavior : MonoBehaviour
+    public class CharacterProjectileBehavior : MonoBehaviour
     {
+        [SerializeField] private int damage = 0;
         [SerializeField] private float autoDestroyTimer = 60;
         private float destroyTimer = 0;
 
@@ -23,7 +24,7 @@ namespace Projectile
 
         private void Update()
         {
-            if (Time.time > destroyTimer) Explote();
+            if (Time.time > destroyTimer) ProjectileHit();
         }
 
         public Rigidbody2D GetRigidbody2D()
@@ -31,13 +32,19 @@ namespace Projectile
             return rb;
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            Explote();
+            if (collision.gameObject.CompareTag("Enemy"))
+            {
+                HealthController healthController = collision.gameObject.GetComponent<HealthController>();
+                healthController.DoDamage(damage);
+                ProjectileHit();
+            }
         }
 
-        private void Explote()
+        private void ProjectileHit()
         {
+
             Destroy(gameObject);
         }
     }

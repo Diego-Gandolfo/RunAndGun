@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-namespace Character
+namespace Gameplay
 {
     public class CharacterController : MonoBehaviour
     {
@@ -16,6 +16,9 @@ namespace Character
         [Header("Jump")]
         [SerializeField] private float jumpImpulse = 0;
         [SerializeField] private float moveReduction = 0;
+        [SerializeField] private LayerMask layerMask = 0;
+        [SerializeField] private float jumpDelay = 0;
+        private float jumpTimer = 0;
         private bool canJump = false;
 
         private Rigidbody2D rb = null;
@@ -39,6 +42,17 @@ namespace Character
             if (Input.GetAxis("Fire1") > 0) OnFire?.Invoke();
 
             if (Input.GetKeyDown(KeyCode.Space) && canJump) DoJump();
+
+            if (!canJump && Time.time > jumpTimer)
+            {
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 0.6f, layerMask);
+                
+                if (hit != false)
+                {
+                    moveVelocity += moveReduction;
+                    canJump = true;
+                }
+            }
         }
 
         private void FixedUpdate()
@@ -48,18 +62,10 @@ namespace Character
 
         private void DoJump()
         {
+            jumpTimer = Time.time + jumpDelay;
             canJump = false;
             rb.AddForce(transform.up * jumpImpulse, ForceMode2D.Impulse);
             moveVelocity -= moveReduction;
-        }
-
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-            if (collision.gameObject.CompareTag("Floor"))
-            {
-                moveVelocity += moveReduction;
-                canJump = true;
-            }
         }
     }
 }

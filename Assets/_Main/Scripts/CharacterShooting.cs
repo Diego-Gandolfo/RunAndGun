@@ -1,14 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Projectile;
 
-namespace Character
+namespace Gameplay
 {
     public class CharacterShooting : MonoBehaviour
     {
         [SerializeField] private Transform projectileSpawnpoint = null;
-        [SerializeField] private ProjectileBehavior prefabProjectile = null;
+        [SerializeField] private CharacterProjectileBehavior prefabProjectile = null;
         [SerializeField] private float projectileImpulse = 0;
         [SerializeField] private float shootCooldown = 0;
 
@@ -18,8 +17,15 @@ namespace Character
 
         private void Awake()
         {
-            characterController = GetComponent<CharacterController>();
+            characterController = GetComponentInParent<CharacterController>();
             characterController.OnFire.AddListener(OnFireHandler);
+        }
+
+        private void Update()
+        {
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); // Almacenamos las coordenadas de donde se encuentra el puntero del Mouse
+            Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
+            transform.right = direction;
         }
 
         private void OnFireHandler()
@@ -33,7 +39,7 @@ namespace Character
 
         private void Shoot()
         {
-            ProjectileBehavior clone = Instantiate(prefabProjectile, projectileSpawnpoint.position, projectileSpawnpoint.rotation);
+            CharacterProjectileBehavior clone = Instantiate(prefabProjectile, projectileSpawnpoint.position, projectileSpawnpoint.rotation);
             Rigidbody2D rbClone = clone.GetRigidbody2D();
             rbClone.AddForce((Vector2)projectileSpawnpoint.right * projectileImpulse, ForceMode2D.Impulse);
         }
