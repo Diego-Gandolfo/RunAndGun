@@ -56,7 +56,7 @@ namespace Gameplay
             var rayDirection = -Vector2.up;
             var rayDistance = 0.1f;
 
-            RaycastHit2D raycastHit2D = Physics2D.Raycast(rayOrigin, rayDirection, rayDistance, _floorLayer);
+            var raycastHit2D = Physics2D.Raycast(rayOrigin, rayDirection, rayDistance, _floorLayer);
             Debug.DrawRay(rayOrigin, rayDirection * rayDistance, Color.blue);
             
             if (raycastHit2D)

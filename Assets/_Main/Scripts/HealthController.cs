@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Gameplay
 {
@@ -8,6 +9,8 @@ namespace Gameplay
     {
         [SerializeField] private int _maxHealth = 0;
         [SerializeField] private int _currentHealth = 0;
+
+        public UnityEvent OnDie;
 
         private void Start()
         {
@@ -30,7 +33,7 @@ namespace Gameplay
 
         private void Die()
         {
-            Destroy(gameObject);
+            OnDie.Invoke();
         }
 
         public int GetCurrentHealth()
