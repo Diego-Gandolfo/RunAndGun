@@ -1142,6 +1142,7 @@ GameObject:
   - component: {fileID: 1384781152}
   - component: {fileID: 1384781151}
   - component: {fileID: 1384781154}
+  - component: {fileID: 1384781155}
   m_Layer: 8
   m_Name: Character
   m_TagString: Player
@@ -1251,6 +1252,18 @@ MonoBehaviour:
   OnDie:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1384781155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384781149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f22d9f2067169f46a69ca95ea27d0d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1402803360
 GameObject:
   m_ObjectHideFlags: 0

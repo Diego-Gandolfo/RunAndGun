@@ -23,7 +23,7 @@ namespace Gameplay
 
         private void Update()
         {
-            var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); // Almacenamos las coordenadas de donde se encuentra el puntero del Mouse
+            var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             var direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
             transform.right = direction;
         }

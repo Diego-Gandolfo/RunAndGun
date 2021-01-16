@@ -13,7 +13,6 @@ namespace Gameplay
         [SerializeField] private float _moveVelocity = 0;
         private float _moveVelocityOriginal = 0;
         private float _moveX = 0;
-        private bool _isFacingRight = true;
 
         [Header("Jump")]
         [SerializeField] private float _jumpImpulse = 0;
@@ -23,7 +22,7 @@ namespace Gameplay
         private float _jumpTimer = 0;
         private bool _isGrounded = false;
 
-        private SpriteRenderer _spriteRenderer = null;
+
         private Rigidbody2D _rb = null;
 
         public UnityEvent OnFire;
@@ -31,7 +30,6 @@ namespace Gameplay
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
-            _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         }
 
         private void Start()
@@ -42,8 +40,6 @@ namespace Gameplay
         private void Update()
         {
             _moveX = Input.GetAxis("Horizontal") * _moveVelocity;
-
-            FlipPlayer();
             
             if (Input.GetAxis("Fire1") > 0) OnFire?.Invoke();
 
@@ -88,20 +84,6 @@ namespace Gameplay
             _moveVelocity -= _moveReduction;
 
             _isGrounded = false;
-        }
-
-        private void FlipPlayer()
-        {
-            if (_moveX > 0 && !_isFacingRight)
-            {
-                _isFacingRight = true;
-                _spriteRenderer.flipX = false;
-            }
-            else if (_moveX < 0 && _isFacingRight)
-            {
-                _isFacingRight = false;
-                _spriteRenderer.flipX = true;
-            }
         }
 
         public void InitializePlayer()
