@@ -15,11 +15,11 @@ TagManager:
   - UI
   - 
   - 
-  - Character
+  - Player
   - Enemy
   - Floor
-  - 
-  - 
+  - CharacterProjectile
+  - EnemyProjectile
   - 
   - 
   - 

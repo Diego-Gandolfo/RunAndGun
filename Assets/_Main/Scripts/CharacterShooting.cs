@@ -6,42 +6,42 @@ namespace Gameplay
 {
     public class CharacterShooting : MonoBehaviour
     {
-        [SerializeField] private Transform projectileSpawnpoint = null;
-        [SerializeField] private CharacterProjectileBehavior prefabProjectile = null;
-        [SerializeField] private float projectileImpulse = 0;
-        [SerializeField] private float shootCooldown = 0;
+        [SerializeField] private Transform _projectileSpawnpoint = null;
+        [SerializeField] private CharacterProjectileBehavior _prefabProjectile = null;
+        [SerializeField] private float _projectileImpulse = 0;
+        [SerializeField] private float _shootCooldown = 0;
 
-        private float shootTimer = 0;
+        private float _shootTimer = 0;
 
-        private CharacterController characterController = null;
+        private CharacterController _characterController = null;
 
         private void Awake()
         {
-            characterController = GetComponentInParent<CharacterController>();
-            characterController.OnFire.AddListener(OnFireHandler);
+            _characterController = GetComponentInParent<CharacterController>();
+            _characterController.OnFire.AddListener(OnFireHandler);
         }
 
         private void Update()
         {
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); // Almacenamos las coordenadas de donde se encuentra el puntero del Mouse
-            Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
+            var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); // Almacenamos las coordenadas de donde se encuentra el puntero del Mouse
+            var direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
             transform.right = direction;
         }
 
         private void OnFireHandler()
         {
-            if (Time.time > shootTimer)
+            if (Time.time > _shootTimer)
             {
                 Shoot();
-                shootTimer = Time.time + shootCooldown;
+                _shootTimer = Time.time + _shootCooldown;
             }
         }
 
         private void Shoot()
         {
-            CharacterProjectileBehavior clone = Instantiate(prefabProjectile, projectileSpawnpoint.position, projectileSpawnpoint.rotation);
-            Rigidbody2D rbClone = clone.GetRigidbody2D();
-            rbClone.AddForce((Vector2)projectileSpawnpoint.right * projectileImpulse, ForceMode2D.Impulse);
+            var clone = Instantiate(_prefabProjectile, _projectileSpawnpoint.position, _projectileSpawnpoint.rotation);
+            var rbClone = clone.GetRigidbody2D();
+            rbClone.AddForce((Vector2)_projectileSpawnpoint.right * _projectileImpulse, ForceMode2D.Impulse);
         }
     }
 }
