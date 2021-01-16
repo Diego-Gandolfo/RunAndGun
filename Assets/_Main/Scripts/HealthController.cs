@@ -32,5 +32,10 @@ namespace Gameplay
         {
             Destroy(gameObject);
         }
+
+        public int GetCurrentHealth()
+        {
+            return _currentHealth;
+        }
     }
 }

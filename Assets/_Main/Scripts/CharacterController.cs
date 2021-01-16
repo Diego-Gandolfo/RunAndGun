@@ -76,6 +76,7 @@ namespace Gameplay
         {
             _jumpTimer = Time.time + _jumpDelay;
 
+            _rb.velocity = Vector2.zero;
             _rb.AddForce(transform.up * _jumpImpulse, ForceMode2D.Impulse);
 
             _moveVelocity -= _moveReduction;
