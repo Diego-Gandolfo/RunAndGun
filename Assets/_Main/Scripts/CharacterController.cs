@@ -11,6 +11,7 @@ namespace Gameplay
     {
         [Header("Movement")]
         [SerializeField] private float _moveVelocity = 0;
+        private float _moveVelocityOriginal = 0;
         private float _moveX = 0;
         private bool _isFacingRight = true;
 
@@ -31,6 +32,11 @@ namespace Gameplay
         {
             _rb = GetComponent<Rigidbody2D>();
             _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        }
+
+        private void Start()
+        {
+            _moveVelocityOriginal = _moveVelocity;
         }
 
         private void Update()
@@ -96,6 +102,13 @@ namespace Gameplay
                 _isFacingRight = false;
                 _spriteRenderer.flipX = true;
             }
+        }
+
+        public void InitializePlayer()
+        {
+            _rb.velocity = Vector2.zero;
+            _moveVelocity = _moveVelocityOriginal;
+            _moveX = 0;
         }
     }
 }

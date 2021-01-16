@@ -7,42 +7,56 @@ namespace Gameplay
     public class GameManager : MonoBehaviour
     {
         [Header("Player Settings")]
-        [SerializeField] private CharacterController characterController = null;
-        [SerializeField] private int maxLifes = 0;
-        private int currentLifes = 0;
-        private HealthController healthController = null;
+        [SerializeField] private int _maxLifes = 0;
+        private int _currentLifes = 0;
 
-        private void Awake()
-        {
-            healthController = characterController.gameObject.GetComponent<HealthController>();
-            healthController.OnDie.AddListener(OnDieHandler);
-        }
+        [Header("Spawnpoint")]
+        private Transform _spawnpoint = null;
+
+        private LevelManager _levelManager = null;
+        private CharacterController _characterController = null;
+        private HealthController _healthController = null;
 
         private void Start()
         {
-            currentLifes = maxLifes;
+            _currentLifes = _maxLifes;
+        }
+
+        public void InitializeLevel(LevelManager levelManager)
+        {
+            _levelManager = levelManager;
+
+            _characterController = _levelManager.GetCharacterController();
+            _healthController = _characterController.GetComponent<HealthController>();
+            _healthController.OnDie.AddListener(OnDieHandler);
+
+            _spawnpoint = _levelManager.GetSpawnpoint();
         }
 
         private void OnDieHandler()
         {
-            currentLifes--;
+            _currentLifes--;
 
-            if (currentLifes <= 0)
+            if (_currentLifes <= 0)
             {
                 Gameover();
             }
-        }
-
-
-
-        private void Victory()
-        {
-
+            else
+            {
+                _characterController.InitializePlayer();
+                _healthController.gameObject.transform.position = _spawnpoint.position;
+                _healthController.gameObject.transform.rotation = _spawnpoint.rotation;
+            }
         }
 
         private void Gameover()
         {
             print("Gameover");
+        }
+
+        private void Victory()
+        {
+            print("Victory");
         }
     }
 }
