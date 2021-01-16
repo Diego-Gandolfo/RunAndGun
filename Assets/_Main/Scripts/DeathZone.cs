@@ -8,7 +8,6 @@ namespace Gameplay
     {
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            print("Hola?");
             var healthController = collision.gameObject.GetComponent<HealthController>();
 
             if (healthController != null)
