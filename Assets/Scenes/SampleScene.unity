@@ -1184,7 +1184,7 @@ MonoBehaviour:
   _floorLayer:
     serializedVersion: 2
     m_Bits: 1024
-  _jumpDelay: 0.1
+  _jumpDelay: 1
   OnFire:
     m_PersistentCalls:
       m_Calls: []
@@ -1313,7 +1313,6 @@ MonoBehaviour:
     type: 3}
   _projectileImpulse: 10
   _shootCooldown: 0.25
-  _freeRotation: 1
 --- !u!1 &1431898721
 GameObject:
   m_ObjectHideFlags: 0

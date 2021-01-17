@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 
@@ -21,7 +18,6 @@ namespace Gameplay
         [SerializeField] private float _jumpDelay = 0;
         private float _jumpTimer = 0;
         private bool _isGrounded = true;
-
 
         private Rigidbody2D _rb = null;
 
