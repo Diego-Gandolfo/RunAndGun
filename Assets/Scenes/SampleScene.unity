@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4fa93a4dd383f34282a2c49b8c45a44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxLifes: 2
+  _maxLifes: 100
 --- !u!4 &67596430
 Transform:
   m_ObjectHideFlags: 0
@@ -1313,6 +1313,7 @@ MonoBehaviour:
     type: 3}
   _projectileImpulse: 10
   _shootCooldown: 0.25
+  _freeRotation: 1
 --- !u!1 &1431898721
 GameObject:
   m_ObjectHideFlags: 0

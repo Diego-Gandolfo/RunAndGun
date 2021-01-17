@@ -12,6 +12,7 @@ namespace Gameplay
         [SerializeField] private float _shootCooldown = 0;
 
         private float _shootTimer = 0;
+        private bool _freeRotation = false;
 
         private CharacterController _characterController = null;
 
@@ -24,8 +25,47 @@ namespace Gameplay
         private void Update()
         {
             var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            var direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
-            transform.right = direction;
+            var direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y).normalized;
+
+            if (_freeRotation)
+            {
+                transform.right = direction;
+            }
+            else
+            {
+                if ((direction.x > 0.75f && direction.x <= 1f) && (direction.y > -0.25f) && (direction.y <= 0.25f))
+                {
+                    transform.right = new Vector2(1f, 0f); // Derecha
+                }
+                else if ((direction.x > 0.25f && direction.x <= 0.75f) && (direction.y > 0.25f) && (direction.y <= 0.75f))
+                {
+                    transform.right = new Vector2(0.5f, 0.5f); // Derecha-Arriba
+                }
+                else if ((direction.x > -0.25f && direction.x <= 0.25f) && (direction.y > 0.75f) && (direction.y <= 1f))
+                {
+                    transform.right = new Vector2(0f, 1f); // Arriba
+                }
+                else if ((direction.x > -0.75f && direction.x <= -0.25f) && (direction.y > 0.25f) && (direction.y <= 0.75f))
+                {
+                    transform.right = new Vector2(-0.5f, 0.5f); // Arriba-Izquierda
+                }
+                else if ((direction.x > -1f && direction.x <= -0.75f) && (direction.y > -0.25f) && (direction.y <= 0.25f))
+                {
+                    transform.right = new Vector2(-1f, 0f); // Izquierda
+                }
+                else if ((direction.x > -0.75f && direction.x <= -0.25f) && (direction.y > -0.75f) && (direction.y <= -0.25f))
+                {
+                    transform.right = new Vector2(-0.5f, -0.5f); // Izquierda-Abajo
+                }
+                else if ((direction.x > -0.25f && direction.x <= 0.25f) && (direction.y > -1f) && (direction.y <= -0.75f))
+                {
+                    transform.right = new Vector2(0f, -1f); // Abajo
+                }
+                else if ((direction.x > 0.25f && direction.x <= 0.75f) && (direction.y > -0.75f) && (direction.y <= -0.25f))
+                {
+                    transform.right = new Vector2(0.5f, -0.5f); // Abajo-Derecha
+                }
+            }
         }
 
         private void OnFireHandler()

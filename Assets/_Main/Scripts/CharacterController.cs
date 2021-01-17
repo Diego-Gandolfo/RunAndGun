@@ -20,7 +20,7 @@ namespace Gameplay
         [SerializeField] private LayerMask _floorLayer = 0;
         [SerializeField] private float _jumpDelay = 0;
         private float _jumpTimer = 0;
-        private bool _isGrounded = false;
+        private bool _isGrounded = true;
 
 
         private Rigidbody2D _rb = null;
@@ -91,6 +91,7 @@ namespace Gameplay
             _rb.velocity = Vector2.zero;
             _moveVelocity = _moveVelocityOriginal;
             _moveX = 0;
+            _isGrounded = true;
         }
     }
 }
