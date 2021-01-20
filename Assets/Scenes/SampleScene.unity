@@ -943,6 +943,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1189216890}
   - component: {fileID: 1189216891}
+  - component: {fileID: 1189216892}
   m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
@@ -1003,7 +1004,8 @@ SpriteRenderer:
   m_SortingLayerID: 241347277
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c493cc41a0703054abd6fd3742f0621c, type: 3}
+  m_Sprite: {fileID: -6367560908665664636, guid: d348dff3819df794186a80cb95777629,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1014,6 +1016,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1189216892
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189216889}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3777217e1d29f824fa7663d2bc510d65, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1202412574
 GameObject:
   m_ObjectHideFlags: 3
@@ -1143,6 +1164,7 @@ GameObject:
   - component: {fileID: 1384781151}
   - component: {fileID: 1384781154}
   - component: {fileID: 1384781155}
+  - component: {fileID: 1384781156}
   m_Layer: 8
   m_Name: Character
   m_TagString: Player
@@ -1262,6 +1284,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f22d9f2067169f46a69ca95ea27d0d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1384781156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384781149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5039b16c34912ca449f827576f1acd2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1402803360
@@ -1803,7 +1837,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7789855, y: 1}
+    m_SensorSize: {x: 1.7766991, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

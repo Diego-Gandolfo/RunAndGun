@@ -89,5 +89,20 @@ namespace Gameplay
             _moveX = 0;
             _isGrounded = true;
         }
+
+        public float GetCharacterVelocityX()
+        {
+            return _rb.velocity.x;
+        }
+
+        public float GetCharacterVelocityY()
+        {
+            return _rb.velocity.y;
+        }
+
+        public bool GetIsGrounded()
+        {
+            return _isGrounded;
+        }
     }
 }
