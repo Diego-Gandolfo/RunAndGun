@@ -8,6 +8,7 @@ namespace Gameplay
         [SerializeField] private int _maxHealth = 0;
         [SerializeField] private int _currentHealth = 0;
 
+        public UnityEvent OnHit;
         public UnityEvent OnDie;
 
         private void Start()
@@ -20,6 +21,7 @@ namespace Gameplay
             _currentHealth -= amount;
 
             if (_currentHealth <= 0) Die();
+            else Hit();
         }
 
         public void DoHeal(int amount)
@@ -32,6 +34,11 @@ namespace Gameplay
         private void Die()
         {
             OnDie.Invoke();
+        }
+
+        private void Hit()
+        {
+            OnHit.Invoke();
         }
 
         public int GetCurrentHealth()

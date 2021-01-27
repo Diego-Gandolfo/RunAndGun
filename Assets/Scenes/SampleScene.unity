@@ -515,13 +515,14 @@ GameObject:
   - component: {fileID: 688792388}
   - component: {fileID: 688792387}
   - component: {fileID: 688792389}
+  - component: {fileID: 688792390}
   m_Layer: 9
-  m_Name: Enemy
+  m_Name: Enemymask
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &688792386
 Transform:
   m_ObjectHideFlags: 0
@@ -530,7 +531,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 688792385}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 0, z: 0}
+  m_LocalPosition: {x: 5.64, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 895504423}
@@ -571,7 +572,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -582,7 +583,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 1}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &688792389
 MonoBehaviour:
@@ -598,9 +599,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 0
   _currentHealth: 0
+  OnHit:
+    m_PersistentCalls:
+      m_Calls: []
   OnDie:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &688792390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688792385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da4994cadd08ee64a952652603bdc785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &704279074
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -681,7 +697,7 @@ GameObject:
   - component: {fileID: 895504423}
   - component: {fileID: 895504424}
   m_Layer: 9
-  m_Name: New Sprite
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -695,8 +711,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 895504422}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.65, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 688792386}
   m_RootOrder: 0
@@ -737,11 +753,12 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1290123401
+  m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3c6e5931acb7ed7448da174aa17efc6a, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: -6367560908665664636, guid: 3750f45c844123341b9a777a96cb1eca,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1271,6 +1288,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 10
   _currentHealth: 0
+  OnHit:
+    m_PersistentCalls:
+      m_Calls: []
   OnDie:
     m_PersistentCalls:
       m_Calls: []
@@ -1837,7 +1857,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7766991, y: 1}
+    m_SensorSize: {x: 1.7789855, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

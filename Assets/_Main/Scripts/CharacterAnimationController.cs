@@ -7,11 +7,16 @@ namespace Gameplay
     public class CharacterAnimationController : MonoBehaviour
     {
         private CharacterController _characterController = null;
+        private HealthController _healthController = null;
         private Animator _animator = null;
 
         private void Awake()
         {
             _characterController = GetComponent<CharacterController>();
+
+            _healthController = GetComponent<HealthController>();
+            _healthController.OnHit.AddListener(OnHitHandler);
+
             _animator = GetComponentInChildren<Animator>();
         }
 
@@ -45,6 +50,11 @@ namespace Gameplay
             }
 
             // TODO: Animacion de Daño
+        }
+
+        private void OnHitHandler()
+        {
+            _animator.SetTrigger("DoHit");
         }
     }
 }
