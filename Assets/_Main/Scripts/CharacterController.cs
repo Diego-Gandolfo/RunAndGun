@@ -82,7 +82,7 @@ namespace Gameplay
             _isGrounded = false;
         }
 
-        public void InitializePlayer()
+        public void InitializePlayerMovement()
         {
             _rb.velocity = Vector2.zero;
             _moveVelocity = _moveVelocityOriginal;

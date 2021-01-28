@@ -41,7 +41,8 @@ namespace Gameplay
             }
             else
             {
-                _characterController.InitializePlayer();
+                _healthController.InitializeHealth();
+                _characterController.InitializePlayerMovement();
                 _healthController.gameObject.transform.position = _spawnpoint.position;
                 _healthController.gameObject.transform.rotation = _spawnpoint.rotation;
             }

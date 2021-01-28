@@ -612,6 +612,7 @@ GameObject:
   - component: {fileID: 688792389}
   - component: {fileID: 688792390}
   - component: {fileID: 688792391}
+  - component: {fileID: 688792392}
   m_Layer: 9
   m_Name: EnemyMask
   m_TagString: Enemy
@@ -715,7 +716,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pointA: {fileID: 1495091806}
   _pointB: {fileID: 574010540}
-  _velocity: 1
+  _velocity: 0.5
 --- !u!114 &688792391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -729,6 +730,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
+--- !u!114 &688792392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688792385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baf4832414cd92d49a44b822e0235086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &704279074
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -810,6 +823,7 @@ GameObject:
   - component: {fileID: 895504423}
   - component: {fileID: 895504424}
   - component: {fileID: 895504425}
+  - component: {fileID: 895504426}
   m_Layer: 9
   m_Name: Sprite
   m_TagString: Untagged
@@ -896,6 +910,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lookAtPlayer: 0
   _characterController: {fileID: 1384781151}
+--- !u!95 &895504426
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895504422}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 81031c42299395248bcf1ec5153ef28e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &975983911
 GameObject:
   m_ObjectHideFlags: 0
@@ -2017,7 +2050,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7789855, y: 1}
+    m_SensorSize: {x: 1.7786885, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

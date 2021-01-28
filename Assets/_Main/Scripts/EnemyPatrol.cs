@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Gameplay
 {
-    public class EnemyMaskController : MonoBehaviour
+    public class EnemyPatrol : MonoBehaviour
     {
         [SerializeField] private Transform _pointA, _pointB;
         [SerializeField] private float _velocity = 0f;

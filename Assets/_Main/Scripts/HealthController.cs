@@ -13,7 +13,7 @@ namespace Gameplay
 
         private void Start()
         {
-            _currentHealth = _maxHealth;
+            InitializeHealth();
         }
 
         public void DoDamage(int amount)
@@ -44,6 +44,11 @@ namespace Gameplay
         public int GetCurrentHealth()
         {
             return _currentHealth;
+        }
+
+        public void InitializeHealth()
+        {
+            _currentHealth = _maxHealth;
         }
     }
 }

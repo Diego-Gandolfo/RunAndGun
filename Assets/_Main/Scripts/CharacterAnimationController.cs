@@ -38,18 +38,19 @@ namespace Gameplay
             if (characterVelocityY > 0)
             {
                 _animator.SetBool("IsJumping", true);
+                _animator.SetTrigger("DoJump");
             }
             else if (characterVelocityY < 0)
             {
                 _animator.SetBool("IsJumping", false);
                 _animator.SetBool("IsFalling", true);
+                _animator.SetTrigger("DoFall");
             }
             else
             {
                 _animator.SetBool("IsFalling", false);
+                _animator.SetTrigger("DoGrounded");
             }
-
-            // TODO: Animacion de Daño
         }
 
         private void OnHitHandler()
